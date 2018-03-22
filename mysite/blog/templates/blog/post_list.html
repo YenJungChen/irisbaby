@@ -1,63 +1,18 @@
-﻿{% load staticfiles %}
 <html>
-<head>
-    <meta charset="utf-8">
-    <script src="http://d3js.org/d3.v3.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="{% static 'js/LoadShootGeo.js' %}" type="text/javascript"></script>
-    <script src="{% static 'js/dragzoom.js' %}" type="text/javascript"></script>
-    <link href="{% static 'css/map.css' %}" rel="stylesheet" type="text/css" />
-
-    <!--for daterangepicker-->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap/3/css/bootstrap.css" />
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
-
-    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker.css" rel="stylesheet">
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>-->
-
-    <!--for googlemap-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTkj_vEwTVGWDOGPMf-cejUoopxhhuqlg"></script>
-    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-</head>
-<body>
-
-    <div id="IrisMap">
-        
-        <input id="Locations" type="hidden" value="">
-        <input id="Msg" type="hidden" value="">
-        <input id="mymap" type="hidden" value="">
-        <!--<input id="Months" type="hidden" value="">
-        <input id="Days" type="hidden" value="">-->
-        <div id="map" display="block"></div>
-        <div id="DP">
-            Date Selector: <input type="text" name="daterange" value="2018/01/01 0:00 - 2018/01/31 23:59" style="width:240px" />
-            <input type="button" id="Clearbtn" value="Clear">
+    <head>
+        <title>Django Girls blog</title>
+    </head>
+    <body>
+        <div>
+            <h1><a href="">Django Girls Blog</a></h1>
         </div>
 
-
-        <!--<div id="DP">
-            <div class="input-daterange input-group">
-                <input id="datepicker" type="text" class="input-sm form-control" name="startdate" value="2018/01/01" />
-                <span class="input-group-addon">to</span>
-                <input id="datepicker" type="text" class="input-sm form-control" name="enddate" value="2018/01/31" />
-            </div>
-            <div>
-                <input type="button" class="input-sm form-control" id="datebtn" value="Change Date">
-            </div>
-
-        </div>-->
-
-        <!--<div id="slider">
-            <label for="Year_val">Month: </label>
-            <span id="Year_val" style="border:0;color:red;"></span><br />
-            <input id="time_slider" type="range" min="08" max="11" value="08" class="slider">
-        </div>-->
-    </div>
-</body>
+        {% for post in posts %}
+        <div>
+            <p>published: {{ post.published_date }}</p>
+            <h1><a href="">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </div>
+        {% endfor %}
+    </body>
 </html>

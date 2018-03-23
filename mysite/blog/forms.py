@@ -5,3 +5,9 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ('title', 'text',)
+
+class UploadFileForm(forms.Form):
+    title = forms.CharField(max_length=15)
+    file = forms.FileField()
+        
+    
